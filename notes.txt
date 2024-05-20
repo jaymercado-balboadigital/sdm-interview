@@ -14,7 +14,8 @@ getProtectedCompanies is async, we should await
 
 BUG 4: The users should be sorted by Name, but they are sorted by id instead.
 LINE 54
-We pass users to removeAdminUser. Inside removeAdminUser, we have a sort function which mutates the original array. Moreover, users are passed by reference and not value. So, the users is being modified
+We pass users to getAdminUser. Inside getAdminUser, we have a sort function which mutates the original array.
+Moreover, array are passed by reference and not value. So, the original array <users> is being modified.
 
 PROBLEM 2:
 2 APIs

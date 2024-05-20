@@ -9,12 +9,10 @@ async function getProtectedCompanies() {
   });
 }
 
-function removeAdminUser(array) {
+function getAdminUser(array) {
   // sort users by id since admin is always the first users
   const sortedArray = array.sort((a, b) => a.id - b.id);
-  // remove the first user which is the admin
-  sortedArray.shift();
-  return sortedArray;
+  return sortedArray[0];
 }
 
 function getUsersByProgramID(req, res) {
@@ -51,7 +49,10 @@ function getUsersByProgramID(req, res) {
             (error, users) => {
               if (error) return res.status(500).send("An error occurred");
               else {
-                const allowedUsers = removeAdminUser(users);
+                const adminUser = getAdminUser(users);
+                const allowedUsers = users.filter(
+                  (user) => user.id !== adminUser.id
+                );
                 return res.send(allowedUsers);
               }
             }
