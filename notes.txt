@@ -4,18 +4,26 @@ BUG 1:
 Line 75
 If response?.affectedRows === 0, we should insert a row not respond with status 500
 
+Result: FAILED TO TROUBLESHOOT. CANDIDATE HAD NO IDEA WHAT COULD BE THE ERROR.
+
 BUG 2:
 LINE 21
 Should be req.query, not req.params
+
+Result: Good use of console.log and read through errors and code moderately fast
 
 BUG 3:
 Line 42
 getProtectedCompanies is async, we should await
 
+Result: Candidate is a php developer, and not familiar with promises and async code.
+
 BUG 4: The users should be sorted by Name, but they are sorted by id instead.
 LINE 54
 We pass users to getAdminUser. Inside getAdminUser, we have a sort function which mutates the original array.
 Moreover, array are passed by reference and not value. So, the original array <users> is being modified.
+
+Result: tried to debug with console.log, but could not fin the issue 
 
 PROBLEM 2:
 2 APIs
@@ -23,6 +31,9 @@ First one INSERTs a row.
 Second one UPDATEs the row created in the first API.
 Problem: There are occasions where the second is API is hit too early, and API number 1 has not inserted the row yet.
 How would you resolve this issue? 
-Possible solution: QUEUEING
+Possible solution: Use a QUEUE or gRPC
 
 PROBLEM 2: Leet code
+Candidate got overwelmed and used to overthink at the beginning.
+I had to tell him to read comments (hints/directions) several times which helped him.
+Had to help him with the syntax
