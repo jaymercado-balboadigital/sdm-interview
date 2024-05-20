@@ -18,7 +18,7 @@ function removeAdminUser(array) {
 }
 
 function getUsersByProgramID(req, res) {
-  const { programID } = req.query;
+  const { programID } = req.params;
 
   if (!programID) res.status(400).send("A program ID is required");
 
@@ -36,10 +36,10 @@ function getUsersByProgramID(req, res) {
       dbConnection.query(
         "SELECT * FROM company WHERE programID = ?",
         [programID],
-        async (error, companies) => {
+        (error, companies) => {
           if (error) return res.status(500).send("An error occurred");
 
-          const protectedCompanies = await getProtectedCompanies();
+          const protectedCompanies = getProtectedCompanies();
           const allowedCompanies = companies.filter(
             (company) => !protectedCompanies.includes(company.name)
           );
@@ -64,7 +64,7 @@ function getUsersByProgramID(req, res) {
   dbConnection.query(
     `
     UPDATE
-      requests
+      request
     SET
       quantity = quantity + 1
     WHERE
@@ -72,21 +72,8 @@ function getUsersByProgramID(req, res) {
     `,
     [programID],
     (error, response) => {
-      if (error) {
+      if (error || response?.affectedRows === 0) {
         return res.status(500).send("An error occurred");
-      } else if (response?.affectedRows === 0) {
-        dbConnection.query(
-          `
-          INSERT INTO requests (quantity, programID) VALUES (?, ?);
-          `,
-          [1, programID],
-          (error, response) => {
-            if (error) {
-              return res.status(500).send("An error occurred");
-            } else if (response?.affectedRows === 0) {
-            }
-          }
-        );
       }
     }
   );
