@@ -1,0 +1,27 @@
+PROBLEM 1: Make API with lots of bugs work
+
+BUG 1:
+Line 75
+If response?.affectedRows === 0, we should insert a row not respond with status 500
+
+BUG 2:
+LINE 21
+Should be req.query, not req.params
+
+BUG 3:
+Line 42
+getProtectedCompanies is async, we should await
+
+BUG 4: The users should be sorted by Name, but they are sorted by id instead.
+LINE 54
+We pass users to removeAdminUser. Inside removeAdminUser, we have a sort function which mutates the original array. Moreover, users are passed by reference and not value. So, the users is being modified
+
+PROBLEM 2:
+2 APIs
+First one INSERTs a row.
+Second one UPDATEs the row created in the first API.
+Problem: There are occasions where the second is API is hit too early, and API number 1 has not inserted the row yet.
+How would you resolve this issue? 
+Possible solution: QUEUEING
+
+PROBLEM 2: Leet code
