@@ -1,3 +1,7 @@
+Notes:
+
+Has not coded for the past 2 years. only admin stuff
+
 PROBLEM 1: Make API with lots of bugs work
 
 BUG 1:
@@ -7,10 +11,14 @@ If response?.affectedRows === 0, we should insert a row not respond with status 
 BUG 2:
 LINE 21
 Should be req.query, not req.params
+Took 10 minutes to troubleshoot.
+Had to go through the whole request object to find that programID is inside query instead of params
 
 BUG 3:
 Line 42
 getProtectedCompanies is async, we should await
+Candidate correctly determined that getProtectedCompanies returns a Promise and that it is not resolving.
+Unfortunately, he did not know that we have to use await.
 
 BUG 4: The users should be sorted by Name, but they are sorted by id instead.
 LINE 54
