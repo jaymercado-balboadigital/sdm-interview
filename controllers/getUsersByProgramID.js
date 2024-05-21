@@ -3,8 +3,9 @@ const dbConnection = require("../lib/dbConnection");
 async function getProtectedCompanies() {
   return new Promise((resolve, reject) => {
     dbConnection.query("SELECT * FROM protected_company", (error, response) => {
-      if (error) throw new Error("An error occurred");
-      else resolve(response);
+      if (error) {
+        throw new Error("An error occurred");
+      } else resolve(response);
     });
   });
 }
@@ -16,7 +17,7 @@ function getAdminUser(array) {
 }
 
 function getUsersByProgramID(req, res) {
-  const { programID } = req.params;
+  const { programID } = req.query;
 
   if (!programID) res.status(400).send("A program ID is required");
 
@@ -38,6 +39,7 @@ function getUsersByProgramID(req, res) {
           if (error) return res.status(500).send("An error occurred");
 
           const protectedCompanies = getProtectedCompanies();
+          console.log("companies", companies);
           const allowedCompanies = companies.filter(
             (company) => !protectedCompanies.includes(company.name)
           );
