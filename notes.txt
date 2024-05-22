@@ -25,4 +25,4 @@ Problem: There are occasions where the second is API is hit too early, and API n
 How would you resolve this issue? 
 Possible solution: QUEUEING
 
-PROBLEM 2: Leet code
+PROBLEM 3: Leet code
