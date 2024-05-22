@@ -1,21 +1,34 @@
 PROBLEM 1: Make API with lots of bugs work
 
 BUG 1:
-Line 75
-If response?.affectedRows === 0, we should insert a row not respond with status 500
-
-BUG 2:
 LINE 21
 Should be req.query, not req.params
 
-BUG 3:
+Applicant does not seem to recognize or notice the error in the terminal even after I hint it few times that terminal is below.
+Not familiar with falsy values.
+Even when proposed, he seems to prefer not to use console.log to debug.
+He mentioned he uses C# and JavaScript
+Has been coding on JS for 2-3 years
+Did not expect a coding interview. Expected interview to be around system design.
+
+BUG 2:
 Line 42
 getProtectedCompanies is async, we should await
 
-BUG 4: The users should be sorted by Name, but they are sorted by id instead.
+BUG 3: The users should be sorted by Name, but they are sorted by id instead.
 LINE 54
 We pass users to getAdminUser. Inside getAdminUser, we have a sort function which mutates the original array.
 Moreover, array are passed by reference and not value. So, the original array <users> is being modified.
+
+BUG 4:
+Line 75
+If response?.affectedRows === 0, we should insert a row not respond with status 500
+
+
+
+ASKED TO  TO GIVE UP AND MOVE ON TO THE SECOND PART OF THE INTERVIEW
+
+
 
 PROBLEM 2:
 2 APIs
@@ -25,4 +38,11 @@ Problem: There are occasions where the second is API is hit too early, and API n
 How would you resolve this issue? 
 Possible solution: QUEUEING
 
+
+When we hit /end, we need to validate if it's 
+
+QUEUEING. Gave us the same solution that we implemented. He created a collection as queue.
+
 PROBLEM 2: Leet code
+
+ASKED TO  TO GIVE UP AND MOVE ON TO THE SECOND PART OF THE INTERVIEW
