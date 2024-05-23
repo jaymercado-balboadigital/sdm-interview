@@ -18,7 +18,7 @@ function getAdminUser(array) {
 function getUsersByProgramID(req, res) {
   const { programID } = req.params;
 
-  if (!programID) res.status(400).send("A program ID is required");
+  if (!programID) return res.status(400).send("A program ID is required");
 
   dbConnection.query(
     "SELECT * FROM program WHERE id = ? AND active = 1;",
