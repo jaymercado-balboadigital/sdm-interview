@@ -1,21 +1,22 @@
 PROBLEM 1: Make API with lots of bugs work
 
 BUG 1:
-Line 75
-If response?.affectedRows === 0, we should insert a row not respond with status 500
-
-BUG 2:
 LINE 21
 Should be req.query, not req.params
 
-BUG 3:
+BUG 2:
 Line 42
 getProtectedCompanies is async, we should await
 
-BUG 4: The users should be sorted by Name, but they are sorted by id instead.
+BUG 3: The users should be sorted by Name, but they are sorted by id instead.
 LINE 54
 We pass users to getAdminUser. Inside getAdminUser, we have a sort function which mutates the original array.
 Moreover, array are passed by reference and not value. So, the original array <users> is being modified.
+
+BUG 4: 
+Line 75
+If response?.affectedRows === 0, we should insert a row not respond with status 500
+
 
 PROBLEM 2:
 2 APIs
@@ -25,4 +26,4 @@ Problem: There are occasions where the second is API is hit too early, and API n
 How would you resolve this issue? 
 Possible solution: QUEUEING
 
-PROBLEM 2: Leet code
+PROBLEM 2: algorithm
