@@ -34,10 +34,10 @@ function getUsersByProgramID(req, res) {
       dbConnection.query(
         "SELECT * FROM company WHERE programID = ?;",
         [programID],
-        (error, companies) => {
+        async (error, companies) => {
           if (error) return res.status(500).send("An error occurred");
 
-          const protectedCompanies = getProtectedCompanies();
+          const protectedCompanies = await getProtectedCompanies();
           const allowedCompanies = companies.filter(
             (company) => !protectedCompanies.includes(company.name)
           );
@@ -50,9 +50,9 @@ function getUsersByProgramID(req, res) {
               if (error) return res.status(500).send("An error occurred");
               else {
                 const adminUser = getAdminUser(users);
-                const allowedUsers = users.filter(
-                  (user) => user.id !== adminUser.id
-                );
+                const allowedUsers = users.filter((user) => {
+                  return user.id !== adminUser.id;
+                });
                 return res.send(allowedUsers);
               }
             }
@@ -67,7 +67,7 @@ function getUsersByProgramID(req, res) {
     [programID],
     (error, response) => {
       if (error || response?.affectedRows === 0) {
-        return res.status(500).send("An error occurred");
+        // return res.status(500).send("An error occurred");
       }
     }
   );

@@ -6,6 +6,6 @@ router.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
-router.get("/users", getUsersByProgramID);
+router.get("/users/:programID", getUsersByProgramID);
 
 module.exports = router;
