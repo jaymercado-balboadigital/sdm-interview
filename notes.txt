@@ -31,12 +31,8 @@ Possible solution: QUEUEING
 
 
 
-PROBLEM 3: algorithm
-
-Initialize two stacks. One stack will be used for enqueuing operations, and the other for dequeuing.
-Enqueue operation will push the element to the first stack.
-Dequeue operation will check if the second stack is empty.
-If it is empty, all elements from the first stack are popped and pushed into the second stack, effectively reversing their order.
-Then, the top element of the second stack is popped.
-Peek operation is similar to dequeue but returns the element without removing it.
-Empty operation checks if both stacks are empty.
+PROBLEM 3:
+1. Explain how you would ensure that the an online application/website can scale to handle increased call volumes during peak times. Describe the stages, technologies, and tools you would use.
+2. How would you design a CI/CD pipeline for deploying updates to the online application? Describe the stages, technologies, and tools you would use.
+3. How would you implement monitoring and handle rollbacks in your CI/CD pipeline for the online application? Describe the stages, technologies, and tools you would use.
+4. How do you approach monitoring and logging? What tools and practices do you use to ensure system reliability and performance? Describe the stages, technologies, and tools you would use.
