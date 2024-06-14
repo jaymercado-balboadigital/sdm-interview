@@ -32,6 +32,21 @@ Possible solution: QUEUEING
 
 
 PROBLEM 3:
+1. Describe the JavaScript event loop.
+How does it handle asynchronous operations such as promises, setTimeout, and async/await?
+
+2. How would are variables passed in JavaScript? Are they passed by value or by reference? Expound.
+
+3. Describe how the value of this is determined in JavaScript.
+
+The value of this depends on the context in which a function is called:
+
+Global Context / Function Calls: this refers to the global object (or undefined in strict mode).
+Method Calls: this refers to the object on which t he method was called.
+Arrow Functions: this is lexically bound, meaning it uses this from the surrounding code.
+Event Handlers: this refers to the element that received the event.
+
+
 1. Explain how you would ensure that an online application/website can scale to handle increased call volumes during peak times.
 Describe the stages, technologies, and tools you would use.
 
